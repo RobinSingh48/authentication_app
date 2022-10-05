@@ -7,6 +7,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
+import 'const/const.dart';
+
 void main()async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -31,10 +33,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.cyan
+        primarySwatch: cyan,
       ),
-      title: "Authentication",
-      home: ( FirebaseAuth.instance.currentUser != null)? HomeScreen(): LoginScreen(),
+      title: materialTitle,
+      home: ( FirebaseAuth.instance.currentUser != null)? const HomeScreen(): const LoginScreen(),
     );
   }
 }

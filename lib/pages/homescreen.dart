@@ -7,6 +7,8 @@ import 'package:authentication_project/tab_bar/user_profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../const/const.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -18,9 +20,9 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
 
   static List homePageWidgets = [
-        Dashboard(),
-        UserProfile(),
-        UpDatePassword(),
+        const Dashboard(),
+        const UserProfile(),
+        const UpDatePassword(),
   ];
 
   void onItemTap(int index){
@@ -35,8 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("HomeScreen",style: TextStyle(
-            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+        title: const Text("HomeScreen",style: scaffoldAppBarTitleTextStyle,),
         actions: [
           IconButton(onPressed: ()async{
             await FirebaseAuth.instance.signOut();
@@ -48,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: homePageWidgets.elementAt(selectedIndex),
        bottomNavigationBar: BottomNavigationBar(
 
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.house),
             label: "Dashboard",
@@ -63,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
       ],
          currentIndex: selectedIndex,
-         selectedItemColor: Colors.redAccent,
+         selectedItemColor: redAccent,
          onTap: onItemTap,
     ),
     );
